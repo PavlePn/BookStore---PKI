@@ -1,16 +1,20 @@
+import { useState } from "react";
 import classes from "./Form.module.css";
 
 function PreporuciModal(props) {
   const loggedUser = JSON.parse(localStorage.getItem("logged"));
-  const users = JSON.parse(localStorage.getItem("users"));
+  const usersInit = JSON.parse(localStorage.getItem("users"));
   const book = JSON.parse(localStorage.getItem("currentBook"));
 
+  const [users, setUsers] = useState(usersInit);
+
   const preporuka = (username) => () => {
-    users.map((user, index) => {
+    users.foreach((user, index) => {
       if (user.username === username) {
-        user.preporuke.push(book);
+        user.preporuke.push(book.naslov);
         users[index] = user;
         localStorage.setItem("users", JSON.stringify(users));
+        setUsers(users);
         return true;
       }
       return false;
@@ -29,8 +33,13 @@ function PreporuciModal(props) {
             <div>
               <li className={classes.item} key={u.username}>
                 <h3>{u.username}</h3>
-                <div className={classes.actions} onClick={preporuka}>
-                  <button onClick={preporuka(u.username)}>Preporuči</button>
+                <div className={classes.actions}>
+                  <button
+                    disabled={u.preporuke.includes(book.naslov)}
+                    onClick={preporuka(u.username)}
+                  >
+                    Preporuči
+                  </button>
                 </div>
               </li>
             </div>

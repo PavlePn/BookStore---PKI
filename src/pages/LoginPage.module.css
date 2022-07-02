@@ -1,6 +1,6 @@
 .image {
   background-repeat: no-repeat;
-  background-image: url("http://127.0.0.1:8887/Cover_1920x1080.jpg");
+  background-image: url("http://127.0.0.1:8887/Util/Cover_1920x1080.jpg");
   height: 100%;
   display: flex;
   position: fixed;
@@ -10,13 +10,13 @@
   overflow: hidden;
   z-index: -1;
 }
-.naslov{
+.naslov {
   color: darkgoldenrod;
   font-size: 10rem;
   font-style: oblique;
   font-family: "Apple Chancery";
   display: flex;
-  position:relative;
+  position: relative;
   top: 30%;
   left: 25%;
 }

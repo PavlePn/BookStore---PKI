@@ -20,9 +20,9 @@ function Navbar(props) {
         <div>
           <header className={classes.header}>
             <div>
-              <div className={classes.logo}>Knjižara perce</div>
+              <button className="btn--link">Knjižara Perce</button>
               <img
-                src="http://127.0.0.1:8887/perce4.png"
+                src="http://127.0.0.1:8887/Util/perce4.png"
                 className={classes.logoImg}
                 alt="Logo"
               />
@@ -51,14 +51,14 @@ function Navbar(props) {
         <div>
           <header className={classes.header}>
             <div>
-              <div
-                className={classes.logo}
+              <button
+                className="btn--link"
                 onClick={() => navigate("/userOverview")}
               >
-                Knjižara perce
-              </div>
+                Knjižara Perce
+              </button>
               <img
-                src="http://127.0.0.1:8887/perce4.png"
+                src="http://127.0.0.1:8887/Util/perce4.png"
                 className={classes.logoImg}
                 alt="Logo"
               />
@@ -95,15 +95,29 @@ function Navbar(props) {
         <div>
           <header className={classes.header}>
             <div>
-              <div className={classes.logo}>Knjižara perce</div>
+              <button
+                className="btn--link"
+                onClick={() => navigate("/sellerOverview")}
+              >
+                Knjižara Perce
+              </button>
+
               <img
-                src="http://127.0.0.1:8887/perce4.png"
+                src="http://127.0.0.1:8887/Util/perce4.png"
                 className={classes.logoImg}
                 alt="Logo"
               />
             </div>
             <nav>
               <ul>
+                <li>
+                  <button
+                    className="btn--link"
+                    onClick={() => navigate("/add")}
+                  >
+                    Dodaj knjigu
+                  </button>
+                </li>
                 <li>
                   <button className="btn--link" onClick={odjava}>
                     Odjava

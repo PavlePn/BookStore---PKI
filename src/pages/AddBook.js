@@ -1,81 +1,92 @@
-import { React, useContext } from "react";
-import classes from "./Form.module.css";
-import { useRef } from "react";
-import ModalsContext from "../../store/Modals";
+import classes from "./AddBook.module.css";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddBook() {
-  const nameInputRef = useRef();
-  const surnameInputRef = useRef();
-  const phoneInputRef = useRef();
-  const addressInputRef = useRef();
-  const usernameInputRef = useRef();
-  const passwordInputRef = useRef();
+  let slikaInputRef;
+  const naslovInputRef = useRef();
+  const pisacInputRef = useRef();
+  const opisInputRef = useRef();
+  const brojStranaInputRef = useRef();
+  const godinaInputRef = useRef();
 
-  const modals = useContext(ModalsContext);
+  let books = JSON.parse(localStorage.getItem("books"));
+  if (!books) books = [];
 
-  let users = JSON.parse(localStorage.getItem("users"));
-  if (!users) users = [];
+  const [slika, setSlika] = useState("generic.jpg");
+  const navigate = useNavigate();
 
   function submitHandler(event) {
     event.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
-    const enteredSurname = surnameInputRef.current.value;
-    const enteredPhone = phoneInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
-    const enteredUsername = usernameInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
+    const enteredNaslov = naslovInputRef.current.value;
+    const enteredPisac = pisacInputRef.current.value;
+    const enteredOpis = opisInputRef.current.value;
+    const enteredBrojStrana = brojStranaInputRef.current.value;
+    const enteredGodina = godinaInputRef.current.value;
 
     const userData = {
-      name: enteredName,
-      surname: enteredSurname,
-      phone: enteredPhone,
-      address: enteredAddress,
-      username: enteredUsername,
-      password: enteredPassword,
-      preporuke: [],
-      type: "kupac",
+      id: books.length + 1,
+      naslov: enteredNaslov,
+      opis: enteredOpis,
+      slika: slika,
+      pisac: enteredPisac,
+      godina: enteredGodina,
+      brojStrana: enteredBrojStrana,
+      promocija: false,
+      ocena: 0,
+      brojOcena: 0,
+      komentari: [],
     };
-    users.push(userData);
-    localStorage.setItem("users", JSON.stringify(users));
-    modals.closeModals();
-    modals.setMessage();
-    modals.setTekst("Registracija je uspešna!");
+    books.push(userData);
+    localStorage.setItem("books", JSON.stringify(books));
+    navigate("/sellerOverview");
   }
   return (
     <div className="modal">
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="name">Ime</label>
-          <input type="text" required id="name" ref={nameInputRef} />
+          <label htmlFor="name">Naslov</label>
+          <input type="text" required id="name" ref={naslovInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="surname">Prezime</label>
-          <input type="text" required id="surname" ref={surnameInputRef} />
+          <label htmlFor="surname">Pisac</label>
+          <input type="text" required id="surname" ref={pisacInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="phone">Broj telefona</label>
-          <input type="text" required id="phone" ref={phoneInputRef} />
+          <label htmlFor="komentar">Opis</label>
+          <textarea type="textarea" required id="komentar" ref={opisInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="adresa">Adresa</label>
-          <input type="text" required id="adresa" ref={addressInputRef} />
+          <label htmlFor="adresa">Broj Strana</label>
+          <input type="text" required id="adresa" ref={brojStranaInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="username">Korisničko ime</label>
-          <input type="text" required id="username" ref={usernameInputRef} />
+          <label htmlFor="username">Godina izdanja</label>
+          <input type="text" required id="username" ref={godinaInputRef} />
         </div>
-        <div className={classes.control}>
-          <label htmlFor="password">Lozinka</label>
+        <div>
           <input
-            type="password"
-            required
-            id="password"
-            ref={passwordInputRef}
+            className={classes.control}
+            type="file"
+            name="file"
+            hidden={true}
+            ref={(refParam) => (slikaInputRef = refParam)}
+            onChange={() => setSlika(slikaInputRef.files[0].name)}
           />
+          <div className={classes.actions}>
+            <button
+              onClick={() => {
+                slikaInputRef.click();
+              }}
+              type="button"
+            >
+              Izaberi sliku
+            </button>
+          </div>
         </div>
         <div className={classes.actions}>
-          <button>Registruj se</button>
+          <button>Dodaj knjigu</button>
         </div>
       </form>
     </div>

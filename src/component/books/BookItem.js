@@ -32,8 +32,6 @@ function BookItem(props) {
             <div className={classes.content}>
               <h3>{book.naslov}</h3>
               <h4>{book.pisac}</h4>
-              <h5>{"Godina izdanja: " + book.godina}</h5>
-              <h5>{"Broj strana: " + book.brojStrana}</h5>
               {loggedIn === "kupac" && (
                 <div className={classes.actions}>
                   <button onClick={openBook}>{"Pogledaj knjigu"}</button>
