@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Petar",
+    "surname": "Petrovic",
+    "phone": "+381654321",
+    "address": "Kralja Dragutina 15",
+    "username": "Pera",
+    "password": "pera123",
+    "preporuke": [],
+    "type": "kupac"
+  },
+  {
+    "name": "Pavle",
+    "surname": "Pavlovic",
+    "phone": "+381654321",
+    "address": "Kralja Milutina 15",
+    "username": "Paja",
+    "password": "paja123",
+    "preporuke": [],
+    "type": "kupac"
+  },
+  {
+    "name": "Mika",
+    "surname": "Mikic",
+    "phone": "+381654321",
+    "address": "Kralja Vladislava 15",
+    "username": "Mika",
+    "password": "mika123",
+    "preporuke": [],
+    "type": "kupac"
+  },
+  {
+    "name": "Ilija",
+    "surname": "Ilic",
+    "username": "Ika",
+    "password": "ika123",
+    "type": "prodavac"
+  }
+]

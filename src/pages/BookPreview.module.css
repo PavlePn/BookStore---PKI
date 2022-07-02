@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+}
+
+.content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: darkgoldenrod;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid darkgoldenrod;
+  border-radius: 4px;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #7a5a07ff;
+  border-color: #7a5a07ff;
+}
+
+.actionContainer {
+  display: flex;
+  margin-left: 35%;
+}
+
+.coments {
+  margin-left: 2rem;
+}
+

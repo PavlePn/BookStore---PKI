@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "naslov": "Majstor i Margarita",
+    "opis": "Rukopisi ne gore. Tridesetih godina prošlog veka u Moskvu stiže đavo. Ubrzo po dolasku, ovaj neočekivani posetilac sa svojim pomoćnicima, među kojima su i jedan mačor koji govori i prelepa veštica, unosi pometnju kod Moskovljana koji odbijaju da veruju kako u Boga tako i u đavola.",
+    "slika": "mm1.jpg",
+    "pisac": "Mihail Bulgakov",
+    "promocija": true,
+    "ocena": 5,
+    "brojOcena": 2,
+    "komentari": [
+      {
+        "korisnik": "Paja",
+        "ocena": 5,
+        "komentar": "Moja omiljena knjiga"
+      },
+      {
+        "korisnik": "Pera",
+        "ocena": 5,
+        "komentar": "I Moja omiljena knjiga"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "naslov": "Saga o Vešcu: Poslednja Želja",
+    "opis": "Svetski popularna Saga o Vešcu obogaćena je radom vrsnih ilustratora na najznačajnijim pričama iz tog serijala. U ovom tomu, Timote Montenj je na majstorski način ilustrovao uvodnu priču iz Poslednje želje, prvog toma sage.",
+    "slika": "w1.jpg",
+    "pisac": "Andržej Spakowski",
+    "promocija": false,
+    "ocena": 0,
+    "brojOcena": 0,
+    "komentari": []
+  },
+  {
+    "id": 3,
+    "naslov": "Saga o Vešcu: Mač Sudbine",
+    "opis": "Mač sudbine se sastoji od šest dužih priča i s Poslednjom željom predstavlja osnov za bolje razumevanje serijala Saga o Vešcu. Zbirka pripovedaka nastala je prepričavanjem nekih od najpoznatijih narodnih bajki kojima su pridodati elementi strave i užasa.",
+    "slika": "w2.jpg",
+    "pisac": "Andržej Spakowski",
+    "promocija": false,
+    "ocena": 0,
+    "brojOcena": 0,
+    "komentari": []
+  }
+]

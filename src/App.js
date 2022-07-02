@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./component/layout/Navbar";
+import BookPreview from "./pages/BookPreview";
+import LoginPage from "./pages/LoginPage";
+import Profil from "./pages/Profil";
+import Recommended from "./pages/Recommended";
+import SellerOverviview from "./pages/SellerOverview";
+import UserOverviview from "./pages/UserOverview";
+import { ModalsContextProvider } from "./store/Modals";
+import { UsersContextProvider } from "./store/Users";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <UsersContextProvider>
+        <ModalsContextProvider>
+          <Navbar />
+          <Routes>
+            <Route exact path="" element={<LoginPage />} />
+            <Route exact path="/userOverview" element={<UserOverviview />} />
+            <Route
+              exact
+              path="/sellerOverview"
+              element={<SellerOverviview />}
+            />
+            <Route exact path="preporuke" element={<Recommended />} />
+            <Route exact path="/userOverview/:id" element={<BookPreview />} />
+            <Route exact path="/profil" element={<Profil />} />
+          </Routes>
+        </ModalsContextProvider>
+      </UsersContextProvider>
     </div>
   );
 }
