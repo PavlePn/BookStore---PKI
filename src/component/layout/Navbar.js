@@ -1,24 +1,22 @@
 import React, { useContext } from "react";
 import classes from "./MainNavigation.module.css";
 import ModalsContext from "../../store/Modals";
-import UsersContext from "../../store/Users";
 import { useNavigate } from "react-router-dom";
 
 function Navbar(props) {
-  const log = useContext(UsersContext);
   const modals = useContext(ModalsContext);
   const navigate = useNavigate();
+  const loggedIn = localStorage.getItem("userType");
 
   function odjava() {
-    log.setLoggedIn("");
+    localStorage.setItem("userType", ""); // log.setLoggedIn("");
     localStorage.removeItem("logged");
     navigate("");
   }
 
-  console.log(log.loggedIn);
   return (
     <div>
-      {log.loggedIn === "" && (
+      {loggedIn === "" && (
         <div>
           <header className={classes.header}>
             <div>
@@ -49,7 +47,7 @@ function Navbar(props) {
           </header>
         </div>
       )}
-      {log.loggedIn === "kupac" && (
+      {loggedIn === "kupac" && (
         <div>
           <header className={classes.header}>
             <div>
@@ -93,7 +91,7 @@ function Navbar(props) {
           </header>
         </div>
       )}
-      {log.loggedIn === "prodavac" && (
+      {loggedIn === "prodavac" && (
         <div>
           <header className={classes.header}>
             <div>

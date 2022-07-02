@@ -4,13 +4,13 @@ function PreporuciModal(props) {
   const loggedUser = JSON.parse(localStorage.getItem("logged"));
   const users = JSON.parse(localStorage.getItem("users"));
   const book = JSON.parse(localStorage.getItem("currentBook"));
+
   const preporuka = (username) => () => {
     users.map((user, index) => {
       if (user.username === username) {
         user.preporuke.push(book);
         users[index] = user;
         localStorage.setItem("users", JSON.stringify(users));
-        localStorage.setItem("logged", JSON.stringify(user));
         return true;
       }
       return false;

@@ -2,12 +2,11 @@ import React, { useContext, useRef } from "react";
 import classes from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
 import ModalsContext from "../../store/Modals";
-import UsersContext from "../../store/Users";
+
 function LoginModal() {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
   const modals = useContext(ModalsContext);
-  const loged = useContext(UsersContext);
   let users = JSON.parse(localStorage.getItem("users"));
   const navigate = useNavigate();
 
@@ -26,11 +25,10 @@ function LoginModal() {
         modals.closeModals();
         if (user.type === "kupac") {
           navigate("/userOverview");
-          loged.setLoggedIn("kupac");
-          console.log(loged.loggedIn);
+          localStorage.setItem("userType", "kupac");
         } else {
           navigate("/sellerOverview");
-          loged.setLoggedIn("prodavac");
+          localStorage.setItem("userType", "prodavac");
         }
         flag = true;
         return true; //redirect to user page

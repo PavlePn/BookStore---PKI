@@ -8,12 +8,10 @@ import Recommended from "./pages/Recommended";
 import SellerOverviview from "./pages/SellerOverview";
 import UserOverviview from "./pages/UserOverview";
 import { ModalsContextProvider } from "./store/Modals";
-import { UsersContextProvider } from "./store/Users";
 
 function App() {
   return (
     <div>
-      <UsersContextProvider>
         <ModalsContextProvider>
           <Navbar />
           <Routes>
@@ -29,7 +27,6 @@ function App() {
             <Route exact path="/profil" element={<Profil />} />
           </Routes>
         </ModalsContextProvider>
-      </UsersContextProvider>
     </div>
   );
 }

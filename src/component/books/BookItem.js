@@ -1,19 +1,22 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import UsersContext from "../../store/Users";
 import Card from "../ui/Card";
 import classes from "./BookItem.module.css";
 
 function BookItem(props) {
   const book = props.book;
   const navigate = useNavigate();
-  const logged = useContext(UsersContext);
-
+  const books = JSON.parse(localStorage.getItem("books"));
+  const loggedIn = localStorage.getItem("userType");
   function openBook() {
     navigate("/userOverview/" + book.id);
   }
 
-  function dodajPromo() {}
+  function togglePromo() {
+    books.filter((bookItem) => bookItem.id === book.id)[0].promocija =
+      !book.promocija;
+    localStorage.setItem("books", JSON.stringify(books));
+    props.setter(books);
+  }
 
   return (
     <div>
@@ -29,16 +32,23 @@ function BookItem(props) {
             <div className={classes.content}>
               <h3>{book.naslov}</h3>
               <h4>{book.pisac}</h4>
-
-              {logged.loggedIn === "kupac" && (
+              <h5>{"Godina izdanja: " + book.godina}</h5>
+              <h5>{"Broj strana: " + book.brojStrana}</h5>
+              {loggedIn === "kupac" && (
                 <div className={classes.actions}>
                   <button onClick={openBook}>{"Pogledaj knjigu"}</button>
                 </div>
               )}
 
-              {logged.loggedIn === "prodavac" && (
+              {loggedIn === "prodavac" && !book.promocija && (
                 <div className={classes.actions}>
-                  <button onClick={dodajPromo}>{"Pogledaj knjigu"}</button>
+                  <button onClick={togglePromo}>{"Promocija"}</button>
+                </div>
+              )}
+
+              {loggedIn === "prodavac" && book.promocija && (
+                <div className={classes.actions}>
+                  <button onClick={togglePromo}>{"Ukloni"}</button>
                 </div>
               )}
             </div>

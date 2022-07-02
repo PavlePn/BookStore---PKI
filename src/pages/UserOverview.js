@@ -6,7 +6,7 @@ function UserOverviview() {
   return (
     <div>
       <div className={classes.center}>
-        <BookList books={books} />
+        <BookList books={books} input="" />
       </div>
     </div>
   );
