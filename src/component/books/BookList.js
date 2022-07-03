@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import BookItem from "./BookItem";
 import classes from "./BookList.module.css";
 
@@ -15,11 +16,14 @@ function BookList(props) {
 
   const promo = filteredData.filter((book) => book.promocija);
   const ostalo = filteredData.filter((book) => !book.promocija);
+
+  const location = useLocation();
+
   return (
     <div>
       {promo.length > 0 && (
         <div>
-          <h2>Promocija</h2>
+          {location.pathname !== "/preporuke" && <h2>Promocija</h2>}
           <ul className={classes.list}>
             {promo.map((bookItem) => (
               <BookItem
@@ -33,7 +37,7 @@ function BookList(props) {
       )}
       {ostalo.length > 0 && (
         <div>
-          <h2>Ostalo</h2>
+          {location.pathname !== "/preporuke" && <h2>Ostalo</h2>}
           <ul className={classes.list}>
             {ostalo.map((bookItem) => (
               <BookItem
