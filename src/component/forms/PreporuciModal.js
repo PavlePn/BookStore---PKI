@@ -9,9 +9,9 @@ function PreporuciModal(props) {
   const [users, setUsers] = useState(usersInit);
 
   const preporuka = (username) => () => {
-    users.foreach((user, index) => {
+    users.map((user, index) => {
       if (user.username === username) {
-        user.preporuke.push(book.naslov);
+        user.preporuke.push(book);
         users[index] = user;
         localStorage.setItem("users", JSON.stringify(users));
         setUsers(users);
@@ -35,7 +35,11 @@ function PreporuciModal(props) {
                 <h3>{u.username}</h3>
                 <div className={classes.actions}>
                   <button
-                    disabled={u.preporuke.includes(book.naslov)}
+                    disabled={
+                      u.preporuke.filter(
+                        (element) => element.naslov === book.naslov
+                      ).length > 0
+                    }
                     onClick={preporuka(u.username)}
                   >
                     Preporuči

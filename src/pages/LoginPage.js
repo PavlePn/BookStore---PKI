@@ -16,9 +16,8 @@ function LoginPage() {
     const books = require("../assets/books.json");
     localStorage.setItem("books", JSON.stringify(books));
   }
-  if (localStorage.getItem("userType") === null) {
-    localStorage.setItem("userType", "");
-  }
+  localStorage.setItem("userType", "");
+
   return (
     <div className={classes.image}>
       <div className={classes.naslov}>Knjižara perce</div>.

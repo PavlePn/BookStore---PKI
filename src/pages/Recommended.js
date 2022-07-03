@@ -6,7 +6,7 @@ function Recommended() {
   return (
     <div>
       <div className={classes.center}>
-        <BookList books={user.preporuke} />
+        <BookList books={user.preporuke} input="" />
       </div>
     </div>
   );
